@@ -1,0 +1,15 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: inkspace-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "InkSpace!2026Secure"
+    ports:
+      - "1433:1433"
+    volumes:
+      - inkspace_sql:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  inkspace_sql:

@@ -1,0 +1,16 @@
+@host = http://localhost:5087
+
+### Login seeded author
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "alex@inkspace.local",
+  "password": "Author@123"
+}
+
+### Public posts
+GET {{host}}/api/posts?page=1&pageSize=9&sort=latest
+
+### Categories
+GET {{host}}/api/categories
