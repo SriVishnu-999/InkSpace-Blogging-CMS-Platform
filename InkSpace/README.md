@@ -68,8 +68,6 @@ dotnet restore
 dotnet run --urls http://localhost:5087
 ```
 
-The sample uses `Database.EnsureCreated()` so the interview/demo database is created automatically. For a production deployment, switch to EF Core migrations.
-
 ### 3. Start React
 
 Open another terminal:
@@ -115,13 +113,7 @@ Change the demo credentials and JWT secret before any real deployment.
 | GET | `/api/comments/pending` | Moderation queue |
 | PATCH | `/api/comments/{id}/moderate` | Approve/reject |
 
-## Interview explanation
 
-A browser request first reaches the React SPA. Axios calls the ASP.NET Core REST API. Controllers validate the request and enforce authorization, EF Core reads/writes SQL Server, and DTO-shaped responses are returned as JSON. JWTs make protected operations stateless. Quill produces rich HTML, but the server sanitizes the HTML before persistence to reduce stored-XSS risk. Comments are not public immediately; they enter a pending state and the post owner or admin moderates them.
-
-### Why this project is stronger than basic CRUD
-
-It demonstrates authentication, role-based authorization, relational modeling, many-to-many relationships (`Post ↔ Tag`), workflow states, moderation, rich-text integration, secure content handling, filtering, pagination, dashboard aggregation and responsive UI — all in one coherent domain.
 
 ## Production upgrades
 
